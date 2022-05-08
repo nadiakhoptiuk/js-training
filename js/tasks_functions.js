@@ -133,3 +133,44 @@
 
 // dashBoard.splice(dashBoard.indexOf(cardToRemove), 0, newCard, newCard, newCard);
 // console.table(dashBoard);
+
+// 10. Напиши функцію getCommonElements(array1, array2), яка отримує два масиви довільної довжини в параметри array1 і array2, і повертає новий масив, що складається з тих елементів, які присутні в обох вихідних масивах.
+
+// спосіб 1 (чомусь у автоперевірках був не до кінця робочий)
+// function getCommonElements(array1, array2) {
+//   const lessArray = array1.length <= array2.length ? array1 : array2;
+//   console.table(lessArray);
+
+//   const biggerArray = array1.length > array2.length ? array1 : array2;
+//   console.table(biggerArray);
+
+//   const newArray = [];
+//   for (const num of lessArray) {
+//     if (biggerArray.includes(num)) {
+//       newArray.push(num);
+//       console.log(`newArray: ${newArray}`);
+//     }
+//   }
+//   return newArray;
+// }
+
+// console.log(
+//   getCommonElements(["Nadia", true, 8, "10"], [3, "Nadia", true, 10])
+// );
+
+// спосіб 2
+// function getCommonElements(array1, array2) {
+//   const newArray = [];
+
+//   for (const value of array1) {
+//     if (array2.includes(value)) {
+//       newArray.push(value);
+//     }
+//   }
+
+//   return newArray;
+// }
+
+// console.log(
+//   getCommonElements(["Nadia", true, 8, "10"], [3, "Nadia", true, 10, 8])
+// );
