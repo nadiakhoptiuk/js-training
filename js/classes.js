@@ -1,65 +1,75 @@
 class Hero {
   constructor({ name = "hero", xp = 1000, wallet = 5000 }) {
-    this.name = name;
-    this.xp = xp;
-    this.wallet = wallet;
+    this._name = name;
+    this._xp = xp;
+    this._wallet = wallet;
   }
 
-  getWallet() {
-    return `В гаманці у ${this.name} ${this.wallet} монет.`;
+  set name(newName) {
+    this._name = newName;
   }
 
-  setWallet(money) {
-    this.wallet += money;
-    return `${this.name} отримує ${money} монет. Всього: ${this.wallet} монет.`;
+  get wallet() {
+    return `В гаманці у ${this._name} ${this._wallet} монет.`;
   }
 
-  setXp(xp) {
-    this.xp += xp;
-    return `${this.name} отримує ${xp} xp. Всього: ${this.xp} xp.`;
+  set wallet(money) {
+    this._wallet += money;
+    return `${this._name} отримує ${money} монет. Всього: ${this._wallet} монет.`;
+    //у сеттері return не видасть в консолі
+  }
+
+  set xp(xp) {
+    this._xp += xp;
+    return `${this._name} отримує ${xp} xp. Всього: ${this._xp} xp.`;
   }
 }
 
 const nadia = new Hero({ name: "Nadia" });
 console.log(nadia);
 
-console.log(nadia.setXp(500));
-console.log(nadia.getWallet());
-console.log(nadia.setWallet(250));
+nadia.xp = 500;
+console.log(nadia.wallet);
+nadia.wallet = 250;
+console.log(nadia.wallet);
 
 class Warrior extends Hero {
   constructor({ race, weapon, ...parentProp }) {
     super(parentProp);
 
-    this.race = race;
-    this.weapons = [weapon];
+    this._race = race;
+    this._weapons = [weapon];
   }
 
-  getRace() {
-    return `${this.name} належить до ${this.race} раси`;
+  get race() {
+    return `${this._name} належить до ${this._race} раси`;
   }
 
-  getWeapon() {
-    const weapons = this.weapons.join(", ");
-    return `${this.name} має таку зброю: ${weapons}.`;
+  get weapon() {
+    const weapons = this._weapons.join(", ");
+    return `${this._name} має таку зброю: ${weapons}.`;
   }
 
-  setWeapon(newWeapon) {
-    this.weapons.push(newWeapon);
-    return `${this.name} отримує нову зброю - ${newWeapon}!`;
+  set weapon(newWeapon) {
+    const newArr = this._weapons.push(newWeapon);
+    return `${this._name} отримує нову зброю - ${newArr}!`;
   }
 }
 
 const ivan = new Warrior({ race: "human", weapon: "sword" });
+
 console.log(ivan);
 
-console.log(ivan.getWeapon());
+console.log(ivan.weapon);
 
-console.log(ivan.getRace());
+console.log(ivan.race);
 
-console.log(ivan.getWallet());
+console.log(ivan.wallet);
 
-console.log(ivan.setXp(450));
+ivan.xp = 450;
+ivan.name = "ivan";
+ivan.weapon = "bow";
+console.log(ivan.weapon);
 
-console.log(ivan.setWeapon("bow"));
-console.log(ivan.getWeapon());
+ivan.weapon = "axe";
+console.log(ivan.weapon);
