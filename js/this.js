@@ -59,38 +59,49 @@
 
 // petro.showContext();
 
-// 4.
-// this в callback-функціях
+// 4. this в callback-функціях
 
-// const user = {
-//   firstName: "Nadia",
-//   lastName: "Khoptiuk",
+const user = {
+  firstName: "Nadia",
+  lastName: "Khoptiuk",
 
-//   getFullName() {
-//     console.log(`${this.firstName} ${this.lastName}`);
-//   },
-// };
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+};
 
-// function makeMessage(callback) {
-//   console.log(`Обробляємо заявку від користувача ${callback}`);
-// }
+function makeMessage(callback) {
+  console.log(`Обробляємо заявку від користувача ${callback}`);
+}
 
-// makeMessage(user.getFullName);
+makeMessage(user.getFullName);
 
-// у callback був присвоєний метод getFullName() {
-//   console.log(`${this.firstName} ${this.lastName}`);
-// },
+// у callback був присвоєний метод getFullName
 // замість callback підставляє опис методу (оскільки його не викликали, а лише присвоїли).
 
-// function makeMessage(callback) {
-//   console.log(`Обробляємо заявку від користувача getFullName() {
+// Обробляємо заявку від користувача getFullName() {
 //     console.log(`${this.firstName} ${this.lastName}`);
 //   }`);
 // }
 
-// makeMessage(user.getFullName());
+makeMessage(user.getFullName());
 
-// Nadia Khoptiuk
-// Обробляємо заявку від користувача undefined
+// Обробляємо заявку від користувача Nadia Khoptiuk - якщо в методі є return
+// Обробляємо заявку від користувача undefined - якщо нема return (console.log) у методі
 
-// makeMessage.bind();
+// 5. this у стрілках
+
+// const showThisInArrow = () => {
+//   console.log(`this in showThis in arrow function: ${this}`);
+// };
+
+// showThisInArrow();
+
+// const user = {
+//   username: "Mango",
+// };
+
+// user.showContext = showThisInArrow;
+
+// user.showContext();
+// console.log(user.showContext);
