@@ -5,9 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .football-field {
+        width: 400px;
+        position: relative;
+        height: 200px;
+        border: 1px solid #212121;
+        background: green;
+        overflow: hidden;
+      }
+      .ball {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: red;
+      }
+    </style>
   </head>
 
   <body>
-    <script src="./js/classes.js" type="module"></script>
+    <div class="football-field">
+      <div class="ball"></div>
+    </div>
+
+    <script src="./js/ball.js" type="module"></script>
   </body>
 </html>
